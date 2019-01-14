@@ -23,7 +23,7 @@ namespace WindowsRobot
             WindowsInput.KeyboardSimulator keyboard = new KeyboardSimulator(inputSimulator);
             WindowsInput.MouseSimulator mouseSimulator = new MouseSimulator(inputSimulator);
 
-            string nazwaProcesu = "Calculator";
+            string nazwaProcesu = "Mk";
             Process process = Process.GetProcessesByName(nazwaProcesu).FirstOrDefault();
             IntPtr handle = process.MainWindowHandle;
             
@@ -39,6 +39,7 @@ namespace WindowsRobot
             bringToFront(nazwaProcesu);
             SetForegroundWindow(handle);
             User32.SetActiveWindow(handle);
+            keyboard.KeyPress(VirtualKeyCode.F2);
             keyboard.TextEntry("123");
                        
             keyboard.KeyPress(VirtualKeyCode.TAB);
