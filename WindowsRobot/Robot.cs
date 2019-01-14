@@ -39,10 +39,49 @@ namespace WindowsRobot
             bringToFront(nazwaProcesu);
             SetForegroundWindow(handle);
             User32.SetActiveWindow(handle);
+            
+            
+            // Poczatek programu
             keyboard.KeyPress(VirtualKeyCode.F2);
+
+            //Tworzenie kontrahenta
             keyboard.TextEntry("123");
-                       
+            keyboard.KeyPress(VirtualKeyCode.F8);
+            keyboard.KeyPress(VirtualKeyCode.VK_Y);
+            keyboard.KeyPress(VirtualKeyCode.VK_Y);
+            keyboard.KeyPress(VirtualKeyCode.F2);
+            keyboard.TextEntry("NazwaSkrocona");
+
             keyboard.KeyPress(VirtualKeyCode.TAB);
+            keyboard.TextEntry("P");
+            keyboard.KeyPress(VirtualKeyCode.TAB);
+            keyboard.TextEntry("1234567890");
+            
+            keyboard.KeyPress(VirtualKeyCode.F2);
+            keyboard.KeyPress(VirtualKeyCode.VK_Y);
+
+            keyboard.KeyPress(VirtualKeyCode.RETURN);
+            //koniec dodawania kontrahenta
+            
+            keyboard.KeyPress(VirtualKeyCode.TAB);
+            keyboard.TextEntry("7");
+
+
+
+
+
+
+
+            keyboard.KeyPress(VirtualKeyCode.TAB);
+
+            keyboard.TextEntry("345");
+
+            keyboard.KeyPress(VirtualKeyCode.TAB);
+
+            keyboard.TextEntry("678");
+
+            keyboard.KeyPress(VirtualKeyCode.F2);
+            //
             string nazwaOkna = process.MainWindowTitle;
             
 
