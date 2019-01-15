@@ -45,14 +45,28 @@ namespace WindowsRobot
             Thread.Sleep(140);
 
             waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//utworz nowy
+            Thread.Sleep(2000);           
+            waitAfterPressKey(keyboard.TextEntry,"123");//Usun konstrahenta o tym NIP
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F8);//Usuniecie NIP
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.VK_Y);
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.VK_Y);//Zamkniecie komunikatow
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.DOWN);
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//Stworzenie nowego kontrahenta
+            waitAfterPressKey(keyboard.TextEntry,"Nazwa skrocona");
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.TAB);
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.VK_P);
+            waitAfterPressKey(keyboard.KeyPress, VirtualKeyCode.TAB);
+            waitAfterPressKey(keyboard.TextEntry, "7740001454");
+            waitAfterPressKey(keyboard.KeyPress, VirtualKeyCode.F2);
+            waitAfterPressKey(keyboard.KeyPress, VirtualKeyCode.VK_Y);
+            waitAfterPressKey(keyboard.KeyPress, VirtualKeyCode.RETURN);
+            waitAfterPressKey(keyboard.TextEntry, "7740001454");
+            waitAfterPressKey(keyboard.KeyPress, VirtualKeyCode.TAB);
+            //koniec dodawania kontrahenta
+            waitAfterPressKey(keyboard.TextEntry, "7");
+            waitAfterPressKey(keyboard.KeyPress, VirtualKeyCode.RETURN);
+
             
-            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//wprowadz NIP
-            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//Usun konstrahenta o tym NIP
-            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//
-            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);
-
-
-
             // Poczatek programu
             //keyboard.KeyPress(VirtualKeyCode.F2);
             //Thread.Sleep(czas);
@@ -86,7 +100,7 @@ namespace WindowsRobot
             //Thread.Sleep(czas);
             //keyboard.KeyPress(VirtualKeyCode.RETURN);
             ////koniec dodawania kontrahenta
-            
+
             //keyboard.KeyPress(VirtualKeyCode.TAB);
             //Thread.Sleep(czas);
             //keyboard.TextEntry("7");
