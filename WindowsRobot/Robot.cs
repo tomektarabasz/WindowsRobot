@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Runtime.InteropServices.ComTypes;
 using System.Runtime.InteropServices.WindowsRuntime;
 using WindowsInput.Native;
+using System.Threading;
 
 namespace WindowsRobot
 {
@@ -39,32 +40,58 @@ namespace WindowsRobot
             bringToFront(nazwaProcesu);
             SetForegroundWindow(handle);
             User32.SetActiveWindow(handle);
+
             
+            Thread.Sleep(140);
+
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//utworz nowy
             
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//wprowadz NIP
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//Usun konstrahenta o tym NIP
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);//
+            waitAfterPressKey(keyboard.KeyPress,VirtualKeyCode.F2);
+
+
+
             // Poczatek programu
-            keyboard.KeyPress(VirtualKeyCode.F2);
+            //keyboard.KeyPress(VirtualKeyCode.F2);
+            //Thread.Sleep(czas);
 
-            //Tworzenie kontrahenta
-            keyboard.TextEntry("123");
-            keyboard.KeyPress(VirtualKeyCode.F8);
-            keyboard.KeyPress(VirtualKeyCode.VK_Y);
-            keyboard.KeyPress(VirtualKeyCode.VK_Y);
-            keyboard.KeyPress(VirtualKeyCode.F2);
-            keyboard.TextEntry("NazwaSkrocona");
-
-            keyboard.KeyPress(VirtualKeyCode.TAB);
-            keyboard.TextEntry("P");
-            keyboard.KeyPress(VirtualKeyCode.TAB);
-            keyboard.TextEntry("1234567890");
+            ////Tworzenie kontrahenta
+            //keyboard.TextEntry("123");
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.F8);
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.VK_Y);
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.VK_Y); 
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.DOWN);
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.F2);
+            //Thread.Sleep(czas);
+            //keyboard.TextEntry("NazwaSkrocona");
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.TAB);
+            //Thread.Sleep(czas);
+            //keyboard.TextEntry("P");
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.TAB);
+            //Thread.Sleep(czas);
+            //keyboard.TextEntry("1234567890");
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.F2);
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.VK_Y);
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.RETURN);
+            ////koniec dodawania kontrahenta
             
-            keyboard.KeyPress(VirtualKeyCode.F2);
-            keyboard.KeyPress(VirtualKeyCode.VK_Y);
-
-            keyboard.KeyPress(VirtualKeyCode.RETURN);
-            //koniec dodawania kontrahenta
-            
-            keyboard.KeyPress(VirtualKeyCode.TAB);
-            keyboard.TextEntry("7");
+            //keyboard.KeyPress(VirtualKeyCode.TAB);
+            //Thread.Sleep(czas);
+            //keyboard.TextEntry("7");
+            //Thread.Sleep(czas);
+            //keyboard.KeyPress(VirtualKeyCode.RETURN);
 
 
 
@@ -72,16 +99,16 @@ namespace WindowsRobot
 
 
 
-            keyboard.KeyPress(VirtualKeyCode.TAB);
+            //keyboard.KeyPress(VirtualKeyCode.TAB);
 
-            keyboard.TextEntry("345");
+            //keyboard.TextEntry("345");
 
-            keyboard.KeyPress(VirtualKeyCode.TAB);
+            //keyboard.KeyPress(VirtualKeyCode.TAB);
 
-            keyboard.TextEntry("678");
+            //keyboard.TextEntry("678");
 
-            keyboard.KeyPress(VirtualKeyCode.F2);
-            //
+            //keyboard.KeyPress(VirtualKeyCode.F2);
+            ////
             string nazwaOkna = process.MainWindowTitle;
             
 
@@ -92,6 +119,7 @@ namespace WindowsRobot
         [DllImport("USER32.DLL")]
         public static extern bool SetForegroundWindow(IntPtr hWnd);
 
+        public const int czas = 1500;
         public static void bringToFront(string title)
         {
             // Get a handle to the Calculator application.
@@ -105,6 +133,16 @@ namespace WindowsRobot
 
             // Make Calculator the foreground application
             SetForegroundWindow(handle);
+        }
+        public static void waitAfterPressKey(Func<VirtualKeyCode,IKeyboardSimulator> func,VirtualKeyCode virtualKeyCode)
+        {
+            Thread.Sleep(czas);
+            func(virtualKeyCode);
+        }
+        public static void waitAfterPressKey(Func<string, IKeyboardSimulator> func, string str)
+        {
+            Thread.Sleep(czas);
+            func(str);
         }
     }
     public static class WindowHelper
